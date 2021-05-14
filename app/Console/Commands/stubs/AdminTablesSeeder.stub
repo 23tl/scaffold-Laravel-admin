@@ -1,0 +1,39 @@
+<?php
+
+namespace Database\DummyNamespace;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class DummyClass extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // base tables
+        DB::table('TableMenu')->truncate();
+        DB::table('TableMenu')->insert(
+            ArrayMenu
+        );
+
+        DB::table('TableRole')->truncate();
+        DB::table('TableRole')->insert(
+            ArrayRole
+        );
+
+        DB::table('role_menu')->truncate();
+        DB::table('role_menu')->insert(
+            ArrayPivotRoleMenu
+        );
+
+        DB::table('TableAdmin')->truncate();
+        DB::table('TableAdmin')->insert(
+            ArrayAdmin
+        );
+        // finish
+    }
+}
