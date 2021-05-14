@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,5 +93,16 @@ Route::prefix('admin')
                         Route::post('update', [CategoryController::class, 'update'])->name('update');
                         Route::post('destroy', [CategoryController::class, 'destroy'])->name('destroy');
                     });
+
+                Route::prefix('news')
+                     ->name('news.')
+                     ->group(function () {
+                         Route::get('/', [NewsController::class, 'index'])->name('index');
+                         Route::get('create', [NewsController::class, 'create'])->name('create');
+                         Route::get('edit/{id}', [NewsController::class, 'edit'])->name('edit');
+                         Route::post('store', [NewsController::class, 'store'])->name('store');
+                         Route::post('update', [NewsController::class, 'update'])->name('update');
+                         Route::post('destroy', [NewsController::class, 'destroy'])->name('destroy');
+                     });
             });
     });

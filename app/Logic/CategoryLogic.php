@@ -14,12 +14,12 @@ class CategoryLogic extends BaseLogic
 {
     /**
      * @param  int|int         $type
-     * @param  string|null     $order
+     * @param  string   $order
      * @param  array|string[]  $columns
      *
      * @return mixed
      */
-    public function getCategories(int $type = 0, string $order = null, array $columns = ['*'])
+    public function getCategories(int $type = 0,  $order = 'recent', array $columns = ['*'])
     {
         return CategoryService::getInstance()->getCategories($type, $order, $columns);
     }

@@ -39,13 +39,43 @@ class ResetPassword extends Command
      */
     public function handle()
     {
-        $name     = $this->ask('请输入您要修改的账户?');
-        $password = $this->secret('请输入您要修改的密码?');
-        if ( ! $admin = Admin::where('name', $name)->first()) {
-            $this->error('您要修改的账户不存在!');
+        if ( ! config('app.debug')) {
+            $this->error('Permission deny!');
+
+            return;
         }
-        $admin->password = $password;
-        $admin->save();
-        $this->info('密码修改成功！');
+
+        $users = Admin::all();
+
+        askForUserName:
+        $username = $this->askWithCompletion(
+            'Please enter a username who needs to reset his password',
+            $users->pluck('username')->toArray()
+        );
+
+        $user = $users->first(
+            function ($user) use ($username) {
+                return $user->username === $username;
+            }
+        );
+
+        if (is_null($user)) {
+            $this->error('The user you entered is not exists');
+            goto askForUserName;
+        }
+
+        enterPassword:
+        $password = $this->secret('Please enter a password');
+
+        if ($password !== $this->secret('Please confirm the password')) {
+            $this->error('The passwords entered twice do not match, please re-enter');
+            goto enterPassword;
+        }
+
+        $user->password = bcrypt($password);
+
+        $user->save();
+
+        $this->info('User password reset successfully.');
     }
 }

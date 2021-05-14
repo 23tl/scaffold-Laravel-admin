@@ -47,4 +47,40 @@ class BaseModel extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    /**
+     * @param          $query
+     * @param  string  $order
+     */
+    public function scopeWithOrder($query, string $order)
+    {
+        switch ($order) {
+            case 'sort':
+                $query->sort();
+                break;
+            default:
+                $query->recent();
+                break;
+        }
+    }
+
+    /**
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeRecent($query)
+    {
+        return $query->orderBy('id', 'desc');
+    }
+
+    /**
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeSort($query)
+    {
+        return $query->orderBy('sort', 'desc');
+    }
 }

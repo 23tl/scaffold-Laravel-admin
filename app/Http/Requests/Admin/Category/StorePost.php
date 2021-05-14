@@ -14,7 +14,7 @@ class StorePost extends AdminRequest
     {
         return [
             'name'     => 'required',
-            'parentId' => 'nullable|exists:categories,parentId',
+            'parentId' => 'nullable|exists:categories,id',
             'type'      =>  [
                 'required',
                 Rule::in([

@@ -31,7 +31,7 @@ class CategoryController extends AdminController
         if ($this->request->ajax()) {
             $categories = $this->logic->getCategories(
                 $this->request->input('type'),
-                'recent',
+                '',
                 ['id', 'name', 'parentId', 'image', 'url', 'sort', 'type']
             );
 

@@ -16,5 +16,4 @@ class Menu extends BaseModel
     {
         return $this->hasMany($this, 'pId', 'id');
     }
-
 }
