@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,17 @@ Route::prefix('admin')
                          Route::post('store', [NewsController::class, 'store'])->name('store');
                          Route::post('update', [NewsController::class, 'update'])->name('update');
                          Route::post('destroy', [NewsController::class, 'destroy'])->name('destroy');
+                     });
+
+                Route::prefix('tags')
+                     ->name('tags.')
+                     ->group(function () {
+                         Route::get('/', [TagsController::class, 'index'])->name('index');
+                         Route::get('create', [TagsController::class, 'create'])->name('create');
+                         Route::get('edit/{id}', [TagsController::class, 'edit'])->name('edit');
+                         Route::post('store', [TagsController::class, 'store'])->name('store');
+                         Route::post('update', [TagsController::class, 'update'])->name('update');
+                         Route::post('destroy', [TagsController::class, 'destroy'])->name('destroy');
                      });
             });
     });

@@ -38,7 +38,7 @@ class MenusServices extends BaseServices
      */
     public function getMenusAuthority(array $columns = ['*'])
     {
-        return Menu::query()->latest()->get($columns);
+        return Menu::query()->get($columns);
     }
 
     /**

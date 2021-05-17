@@ -65,7 +65,7 @@ class MenusController extends AdminController
     {
         $this->logic->storeMenu(
             $request->input('title'),
-            $request->input('parentId', 0),
+            $request->input('parentId', 0) ?? 0,
             $request->input('href', null),
             'fa '.$request->input('icon', null)
         );
@@ -83,7 +83,7 @@ class MenusController extends AdminController
         $this->logic->updateMenu(
             $request->input('id'),
             $request->input('title'),
-            $request->input('parentId', 0),
+            $request->input('parentId', 0) ?? 0,
             $request->input('href', null),
             $request->input('icon', null)
         );

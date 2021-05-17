@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class News extends BaseModel
 {
@@ -17,5 +16,17 @@ class News extends BaseModel
     public function category()
     {
         return $this->belongsTo(Category::class, 'categoryId', 'id');
+    }
+
+    /**
+     * @param $value
+     */
+    public function setDescriptionAttribute($value)
+    {
+        if ($value) {
+            $value = Str::limit($value, 200);
+        }
+
+        $this->attributes['description'] = $value;
     }
 }

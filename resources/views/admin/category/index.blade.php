@@ -59,7 +59,10 @@
                     if(res.type.code == '{{ \App\Models\Category::TYPE_FAST }}') {
                         return '<div class="layui-table-cell"><span class="treeTable-icon open" lay-tid="1" lay-tpid="0" lay-ttype="file"><i class="'+ res.image +'"></i></span></div>';
                     } else {
-                        return '<div style="height:100px"><img src="'+ res.image +'"style="height:100px"></div>';
+                        if(res.image) {
+                            return '<div style="height:100px"><img src="'+ res.image +'"style="height:100px"></div>';
+                        }
+                        return '暂无';
                     }
                 }},
                 {field: 'url', minWidth: 200, title: '链接'},

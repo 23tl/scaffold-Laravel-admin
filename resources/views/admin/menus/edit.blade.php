@@ -77,6 +77,7 @@
             // 点击回调
             click: function (data) {
                 console.log(data);
+                layui.$('#iconPicker').val('fa '+data.icon);
             },
             // 渲染成功后的回调
             success: function(d) {

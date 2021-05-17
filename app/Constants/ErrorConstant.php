@@ -50,4 +50,14 @@ class ErrorConstant
         'code' => 10031,
         'message' => '删除前请先删除下级分类'
     ];
+
+    const ADMIN_CATEGORY_DELETE_NEWS = [
+        'code' => 10032,
+        'message' => '该分类下还有新闻，请删除该分类前请先删除新闻'
+    ];
+
+    const ADMIN_NEWS_NOT_FUND = [
+        'code' => 10040,
+        'message' => '新闻不存在'
+    ];
 }

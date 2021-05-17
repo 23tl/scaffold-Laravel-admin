@@ -12,16 +12,18 @@ class CategoryCollection extends Resources
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
+            'id'       => $this->id,
+            'name'     => $this->name,
             'parentId' => $this->parentId,
-            'sort' => $this->sort,
-            'url' => $this->url,
-            'type' => [
+            'sort'     => $this->sort,
+            'url'      => $this->url ?? '暂无',
+            'type'     => [
                 'code' => $this->type,
-                'name' =>  Category::$typeMap[$this->type] ??'',
+                'name' => Category::$typeMap[$this->type] ?? '',
             ],
-            'image' => (int)$this->type === Category::TYPE_FAST ? $this->image : getFile($this->image),
+            'image'    => (int)$this->type === Category::TYPE_FAST ? $this->image : $this->image ? getFile(
+                $this->image
+            ) : $this->image,
         ];
     }
 }

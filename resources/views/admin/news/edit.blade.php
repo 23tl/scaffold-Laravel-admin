@@ -1,5 +1,5 @@
 @include('admin._style', [
-    'name' => '添加新闻'
+    'name' => '编辑新闻'
 ])
 <body>
 <div class="layui-form layuimini-form">
@@ -13,7 +13,7 @@
                     <optgroup label="{{ $one->name }}">
                         @foreach($categories->where('parentId', '!=', 0) as $category)
                             @if($one->id === $category->parentId)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" @if($category->id === $news->categoryId) selected="" @endif>{{ $category->name }}</option>
                             @endif
                         @endforeach
                     </optgroup>
@@ -25,14 +25,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">名称</label>
         <div class="layui-input-block">
-            <input type="text" name="name" lay-verify="required" lay-reqtext="名称不能为空" placeholder="请输入名称" value="{{ old('name') }}" class="layui-input">
+            <input type="text" name="name" lay-verify="required" lay-reqtext="名称不能为空" placeholder="请输入名称" value="{{ old('name', $news->name) }}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">描述</label>
         <div class="layui-input-block">
-            <textarea placeholder="请输入内容" name="description" class="layui-textarea">{{ old('description') }}</textarea>
+            <textarea placeholder="请输入描述" name="description" class="layui-textarea">{{ old('description', $news->description) }}</textarea>
         </div>
     </div>
 
@@ -42,25 +42,26 @@
             <div class="layui-upload-drag" id="test10">
                 <i class="layui-icon"></i>
                 <p>点击上传，或将文件拖拽到此处，尺寸比为750*470</p>
-                <div class="layui-hide" id="uploadDemoView">
+                <div  @if($news->image) class="layui-show" @else class="layui-hide" @endif id="uploadDemoView">
                     <hr>
-                    <img src="" alt="上传成功后渲染" style="max-width: 196px;">
-
+                    <img src="{{ getFile($news->image) }}" alt="上传成功后渲染" style="max-width: 196px;">
                 </div>
             </div>
         </div>
 
-        <input type="hidden" value="" id="cover" name="image">
+        <input type="hidden" value="{{ $news->image }}" id="cover" name="image">
 
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">内容</label>
         <div class="layui-input-block">
-            <textarea id="content" name="content" lay-verify="请输入新闻正文" style="display: none;"></textarea>
+            <textarea id="content" name="content" lay-verify="请输入新闻正文" style="display: none;">{{ $news->content }}</textarea>
 
         </div>
     </div>
+
+    <input type="hidden" value="{{ $news->id }}" name="id">
 
 
     <div class="layui-form-item">
@@ -102,7 +103,7 @@
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            postAjaxDestroy('{{ route('admin.news.store') }}', data.field, iframeIndex);
+            postAjaxDestroy('{{ route('admin.news.update') }}', data.field, iframeIndex);
             return false;
         });
 

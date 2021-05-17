@@ -74,10 +74,18 @@
                 {field: 'id', title: 'ID', sort: true},
                 {field: 'name', title: '名称'},
                 {field: 'cover', title: '封面图', height: 150 , templet:function(res) {
+                    if(res.cover) {
                         return '<div style="height:50px"><img src="'+ res.cover +'" style="height:50px"></div>';
+                    }
+                    return '暂无';
                  }},
                 {field: 'category', title: '分类'},
-                {field: 'description', title: '描述'},
+                {field: 'description', title: '描述', templet:function (res) {
+                    if(res.description) {
+                        return res.description;
+                    }
+                    return '暂无';
+                }},
                 {field: 'createdTime', title: '创建时间'},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
@@ -141,10 +149,6 @@
                     })
                     obj.del();
                 });
-            } else if (obj.event === 'review') {
-                postAjaxTableReload('{{ route('admin.news.update') }}', {
-                    id:obj.data.id,
-                }, 'currentTableId')
             }
         });
 

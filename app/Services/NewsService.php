@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use App\Exceptions\Admin\Category\CategoryNotFundException;
+use App\Exceptions\Admin\News\NewsNotFundException;
 use App\Models\Category;
 use App\Models\News;
 use App\Traits\Singleton;
@@ -34,30 +35,18 @@ class NewsService extends BaseServices
     }
 
     /**
-     * @param  int             $parentId
-     * @param  string|null     $order
-     * @param  array|string[]  $columns
-     *
-     * @return mixed
-     */
-    public function getSubordinateCategories(int $parentId, string $order = null, array $columns = ['*'])
-    {
-        return Category::query()->where('parentId', $parentId)->withOrder($order)->get($columns);
-    }
-
-    /**
      * @param  int  $id
      *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object
-     * @throws CategoryNotFundException
+     * @throws NewsNotFundException
      */
-    public function getCategoryById(int $id)
+    public function getNewsById(int $id)
     {
-        $category = Category::query()->where('id', $id)->first();
-        if (!$category) {
-            throw new CategoryNotFundException();
+        $news = News::query()->where('id', $id)->first();
+        if (!$news) {
+            throw new NewsNotFundException();
         }
-        return $category;
+        return $news;
     }
 
     /**
@@ -65,19 +54,29 @@ class NewsService extends BaseServices
      *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
      */
-    public function storeCategory(array $params = [])
+    public function storeNews(array $params = [])
     {
-        return Category::query()->create($params);
+        return News::query()->create($params);
     }
 
     /**
      * @param  int    $id
      * @param  array  $params
      *
-     * @return int
+     * @return bool|int
      */
-    public function updateCategory(int $id, array $params = [])
+    public function updateNews(int $id, array $params = [])
     {
-        return Category::query()->where('id', $id)->update($params);
+        return News::query()->where('id', $id)->first()->update($params);
+    }
+
+    /**
+     * @param  int  $id
+     *
+     * @return mixed
+     */
+    public function destroyNews(int $id)
+    {
+        return News::query()->where('id', $id)->delete();
     }
 }

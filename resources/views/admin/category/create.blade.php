@@ -26,18 +26,19 @@
             <input type="text" name="name" lay-verify="required" lay-reqtext="名称不能为空" placeholder="请输入名称" value="{{ old('name') }}" class="layui-input">
         </div>
     </div>
-
+    @if(isset($_GET['type']) && (int)$_GET['type'] === \App\Models\Category::TYPE_FAST)
     <div class="layui-form-item">
         <label class="layui-form-label required">链接</label>
         <div class="layui-input-block">
             <input type="text" name="url" lay-verify="required" lay-reqtext="链接不能为空" placeholder="请输入链接" value="{{ old('url') }}" class="layui-input">
         </div>
     </div>
+    @endif
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">排序</label>
+        <label class="layui-form-label">排序</label>
         <div class="layui-input-block">
-            <input type="text" name="sort" lay-verify="required" lay-reqtext="排序不能为空" placeholder="请输入排序" value="{{ old('sort', 0) }}" class="layui-input">
+            <input type="text" name="sort"  placeholder="请输入排序" value="{{ old('sort', 0) }}" class="layui-input">
         </div>
     </div>
     @if(isset($_GET['type']) && (int)$_GET['type'] === \App\Models\Category::TYPE_FAST)
@@ -49,7 +50,7 @@
         </div>
     @else
         <div class="layui-form-item">
-            <label class="layui-form-label required">图标</label>
+            <label class="layui-form-label">图标</label>
             <div class="layui-input-block">
                 <div class="layui-upload-drag" id="test10">
                     <i class="layui-icon"></i>
