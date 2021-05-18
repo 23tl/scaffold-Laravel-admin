@@ -27,10 +27,11 @@ function openNewWindow(title,url){
 }
 
 function postAjaxDestroy(url, data, iframeIndex = false) {
-     layui.$.ajax({
+     return layui.$.ajax({
         url:url,
         method: 'POST',
         data: data,
+        async:false,
         headers: {
             'X-CSRF-TOKEN': layui.$('meta[name="csrf-token"]').attr('content')
         },

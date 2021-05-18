@@ -101,10 +101,12 @@
 
             if (layEvent === 'del') {
                 layer.confirm('真的删除行么', function (index) {
-                    postAjaxDestroy('{{ route('admin.category.destroy') }}', {
+                    var result = postAjaxDestroy('{{ route('admin.category.destroy') }}', {
                         id:obj.data.id,
                     })
-                    obj.del();
+                    if(result.status == 200) {
+                        obj.del();
+                    }
                 });
             } else if (layEvent === 'edit') {
                 var index = openNewWindow('编辑分类', '{{ url('admin/category/edit') }}/'+obj.data.id+'?type='+{{ isset($_GET['type']) ? $_GET['type'] : 1 }},)

@@ -144,10 +144,12 @@
                 return false;
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
-                    postAjaxDestroy('{{ route('admin.news.destroy') }}', {
+                   var result = postAjaxDestroy('{{ route('admin.news.destroy') }}', {
                         id:obj.data.id,
                     })
-                    obj.del();
+                    if(result.status == 200) {
+                        obj.del();
+                    }
                 });
             }
         });

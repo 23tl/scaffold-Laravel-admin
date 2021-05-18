@@ -5,11 +5,13 @@ namespace App\Logic;
 
 
 use App\Exceptions\Admin\Category\CategoryDeleteException;
+use App\Exceptions\Admin\Category\CategoryDeleteGoodsException;
 use App\Exceptions\Admin\Category\CategoryDeleteNewsException;
 use App\Models\Category;
 use App\Properties\Parameter\Category\Store;
 use App\Properties\Parameter\Category\Update;
 use App\Services\CategoryService;
+use App\Services\GoodsServices;
 use App\Services\NewsService;
 
 class CategoryLogic extends BaseLogic
@@ -85,7 +87,7 @@ class CategoryLogic extends BaseLogic
     public function destroyCategory(int $id)
     {
         $category = CategoryService::getInstance()->getCategoryById($id);
-        if ((int)$category->parentId === 0) {
+        if ((int)$category->parentId !== 0) {
             // 如果是 新闻 则查找新闻该分类下是否有新闻
             if ((int)$category->type === Category::TYPE_NEWS) {
                 if (count(NewsService::getInstance()->getNewsList(1, 10, [

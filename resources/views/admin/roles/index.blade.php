@@ -79,10 +79,12 @@
                 return false;
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除该角色么？', function (index) {
-                    postAjaxDestroy('{{ route('admin.roles.destroy') }}', {
+                    var result = postAjaxDestroy('{{ route('admin.roles.destroy') }}', {
                         id:obj.data.id,
                     })
-                    location.reload();
+                    if(result.status == 200) {
+                        obj.del();
+                    }
                 });
             }
         });

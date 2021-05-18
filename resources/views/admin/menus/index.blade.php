@@ -83,10 +83,12 @@
 
             if (layEvent === 'del') {
                 layer.confirm('真的删除该菜单么？', function (index) {
-                    postAjaxDestroy('{{ route('admin.menus.destroy') }}', {
+                    var result = postAjaxDestroy('{{ route('admin.menus.destroy') }}', {
                         id:obj.data.id,
                     })
-                    location.reload();
+                    if(result.status == 200) {
+                        obj.del();
+                    }
                 });
             } else if (layEvent === 'edit') {
                 var index = openNewWindow('编辑菜单', '{{ url('admin/menus/edit') }}/'+obj.data.id)

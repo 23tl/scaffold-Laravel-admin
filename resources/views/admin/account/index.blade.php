@@ -82,10 +82,12 @@
                 return false;
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除该管理员么', function (index) {
-                    postAjaxDestroy('{{ route('admin.account.destroy') }}', {
+                    var result = postAjaxDestroy('{{ route('admin.account.destroy') }}', {
                         idx:obj.data.id,
                     })
-                    location.reload();
+                    if(result.status == 200) {
+                        obj.del();
+                    }
                 });
             }
         });
