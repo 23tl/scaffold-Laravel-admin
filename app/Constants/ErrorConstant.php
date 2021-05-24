@@ -60,4 +60,19 @@ class ErrorConstant
         'code' => 10040,
         'message' => '新闻不存在'
     ];
+
+    const API_USER_NOT_FUND = [
+        'code' => 20010,
+        'message' => '用户不存在',
+    ];
+
+    const API_USER_PASSWORD = [
+        'code' => 20011,
+        'message' => '账号密码错误'
+    ];
+
+    const API_USER_TOKEN_NOT_FUND = [
+        'code' => 20012,
+        'message' => '令牌不存在'
+    ];
 }

@@ -70,7 +70,7 @@ class Response
             }
 
             $data['data'] = empty($response->original) ? new stdClass() : $response->original;
-            $response->setContent($data);
+            $response->setContent(Json::encode($data));
         }
         return $response;
     }

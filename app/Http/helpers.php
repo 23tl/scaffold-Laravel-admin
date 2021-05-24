@@ -32,22 +32,6 @@ if ( ! function_exists('setImagesUrlPath')) {
 }
 
 /**
- *
- */
-if ( ! function_exists('setCompanyRouteImages')) {
-    function setCompanyRouteImages(array $data = [])
-    {
-        foreach ($data as $key => $dist) {
-            if (isset($dist['images']) && is_array($dist['images'])) {
-                $data[$key]['images'] = setImagesUrlPath($dist['images']);
-            }
-        }
-
-        return $data;
-    }
-}
-
-/**
  * 菜单节点
  */
 if ( ! function_exists('myTree')) {
@@ -84,5 +68,25 @@ if (! function_exists('getMenusAuthorityTree')) {
             }
         }
         return $tree;
+    }
+}
+
+/**
+ * 生成唯一邀请码
+ */
+if (!function_exists('enCode'))
+{
+    function enCode(int $userId, int $length = 6)
+    {
+        $code = ''; // 邀请码
+        $key = 'qsahquwhashnldnoq12312';
+        $num = strlen($key);
+        while ($userId > 0) { // 转进制
+            $mod = $userId % $num; // 求模
+            $userId = ($userId - $mod) / $num;
+            $code = $key[$mod] . $code;
+        }
+        $code = str_pad($code, $length, '0', STR_PAD_LEFT); // 不足用0补充
+        return $code;
     }
 }

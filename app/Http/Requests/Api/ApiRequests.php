@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Http\Requests\Admin;
-
+namespace App\Http\Requests\Api;
 
 use App\Http\Requests\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AdminRequest extends Requests
+class ApiRequests extends Requests
 {
+
 }
