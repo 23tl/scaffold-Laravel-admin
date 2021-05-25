@@ -3,11 +3,10 @@
 
 namespace App\Services;
 
-use App\Exceptions\Admin\Menus\MenuNotFundException;
+use App\Exceptions\Menus\MenuNotFundException;
 use App\Models\Menu;
 use App\Models\Role;
 use App\Traits\Singleton;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class MenusServices

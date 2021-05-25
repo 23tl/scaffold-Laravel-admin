@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Exceptions\Admin\Menus;
+namespace App\Exceptions\Menus;
 
 
 use App\Constants\ErrorConstant;

@@ -3,7 +3,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\Admin\Account\AdminNotFundException;
+use App\Exceptions\Account\AdminNotFundException;
 use App\Models\Admin;
 use App\Traits\Singleton;
 

@@ -4,7 +4,7 @@
 namespace App\Logic;
 
 
-use App\Exceptions\Admin\Account\AdminNotDeleteException;
+use App\Exceptions\Account\AdminNotDeleteException;
 use App\Models\Admin;
 use App\Properties\Parameter\Account\Store;
 use App\Properties\Parameter\Account\Update;

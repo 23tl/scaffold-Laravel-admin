@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Exceptions\Admin\Category;
+namespace App\Exceptions\Category;
 
 
 use App\Constants\ErrorConstant;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Exceptions\Admin\Roles;
+namespace App\Exceptions\Roles;
 
 
 use App\Constants\ErrorConstant;

@@ -3,8 +3,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\Admin\Category\CategoryNotFundException;
-use App\Exceptions\Admin\News\NewsNotFundException;
+use App\Exceptions\News\NewsNotFundException;
 use App\Models\Category;
 use App\Models\News;
 use App\Traits\Singleton;

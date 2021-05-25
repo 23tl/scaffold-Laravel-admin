@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Exceptions\Api\User;
+namespace App\Exceptions\User;
 
 use App\Constants\ErrorConstant;
 use App\Exceptions\BaseException;

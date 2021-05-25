@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Exceptions\Admin\News;
+namespace App\Exceptions\News;
 
 
 use App\Constants\ErrorConstant;

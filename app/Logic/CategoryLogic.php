@@ -4,14 +4,12 @@
 namespace App\Logic;
 
 
-use App\Exceptions\Admin\Category\CategoryDeleteException;
-use App\Exceptions\Admin\Category\CategoryDeleteGoodsException;
-use App\Exceptions\Admin\Category\CategoryDeleteNewsException;
+use App\Exceptions\Category\CategoryDeleteException;
+use App\Exceptions\Category\CategoryDeleteNewsException;
 use App\Models\Category;
 use App\Properties\Parameter\Category\Store;
 use App\Properties\Parameter\Category\Update;
 use App\Services\CategoryService;
-use App\Services\GoodsServices;
 use App\Services\NewsService;
 
 class CategoryLogic extends BaseLogic

@@ -4,7 +4,7 @@
 namespace App\Services;
 
 
-use App\Exceptions\Api\User\UserNotFundException;
+use App\Exceptions\User\UserNotFundException;
 use App\Models\User;
 use App\Traits\Singleton;
 

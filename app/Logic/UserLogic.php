@@ -4,8 +4,8 @@
 namespace App\Logic;
 
 
-use App\Exceptions\Api\User\UserNotPasswordException;
-use App\Exceptions\Api\User\UserTokenNotException;
+use App\Exceptions\User\UserNotPasswordException;
+use App\Exceptions\User\UserTokenNotException;
 use App\Facades\Json\Json;
 use App\Services\UserServices;
 use App\Cache\UserCache;

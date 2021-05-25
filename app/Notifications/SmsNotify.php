@@ -2,10 +2,10 @@
 
 namespace App\Notifications;
 
-use App\Channels\EasySms;
+use App\Channels\EasySms\EasySms;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Overtrue\EasySms\Message;
+use App\Channels\EasySms\Message\Message;
 
 class SmsNotify extends Notification
 {
@@ -48,7 +48,8 @@ class SmsNotify extends Notification
         return (new Message())
             ->setContent($this->data['content'] ?? '')
             ->setData($this->data['params'] ?? [])
-            ->setTemplate($this->data['template'] ?? '');
+            ->setTemplate($this->data['template'] ?? '')
+            ->setScenes($this->data['scenes'] ?? '');
     }
 
     /**

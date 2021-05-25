@@ -3,7 +3,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\Admin\Roles\RoleNotFundException;
+use App\Exceptions\Roles\RoleNotFundException;
 use App\Models\Role;
 use App\Traits\Singleton;
 

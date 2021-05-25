@@ -75,4 +75,19 @@ class ErrorConstant
         'code' => 20012,
         'message' => '令牌不存在'
     ];
+
+    const API_SMS_SEND_FREQUENCY = [
+        'code' => 20021,
+        'message' => '发送频率受限',
+    ];
+
+    const API_SMS_EXPIRED = [
+        'code' => 20022,
+        'message' => '验证码已过期',
+    ];
+
+    const API_SMS_ERROR = [
+        'code' => 20023,
+        'message' => '验证码不正确',
+    ];
 }

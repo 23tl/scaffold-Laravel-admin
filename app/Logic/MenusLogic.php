@@ -4,7 +4,7 @@
 namespace App\Logic;
 
 
-use App\Exceptions\Admin\Menus\MenuDeleteException;
+use App\Exceptions\Menus\MenuDeleteException;
 use App\Services\MenusServices;
 
 class MenusLogic extends BaseLogic

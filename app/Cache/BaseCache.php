@@ -10,6 +10,8 @@ class BaseCache extends Redis
 {
     const MINUTE_TIME = 60;
 
+    const HALF_HOUR_TIME = self::MINUTE_TIME * 30;
+
     const HOUR_TIME = self::MINUTE_TIME * 60;
 
     CONST DAY_TIME = self::HOUR_TIME * 24;

@@ -26,7 +26,7 @@ class LoginController extends ApiController
      * @param  LoginPost  $requests
      *
      * @return array
-     * @throws \App\Exceptions\Api\User\UserNotPasswordException
+     * @throws \App\Exceptions\User\UserNotPasswordException
      */
     public function login(LoginPost $requests)
     {

@@ -4,6 +4,7 @@
 namespace App\Http\Requests\Api\Auth;
 
 use App\Http\Requests\Api\ApiRequests;
+use App\Rules\SmsValidate;
 
 class RegisterPost extends ApiRequests
 {
@@ -13,13 +14,8 @@ class RegisterPost extends ApiRequests
             'mobile'                => 'required|unique:users,mobile',
             'code'                  => [
                 'required',
-                function ($attribute, $value, $fail) {
-                    if ( ! captcha_api_check($value, $this->input('key'))) {
-                        $fail('图形验证码错误');
-                    }
-                },
+                new SmsValidate($this->input('scenes'), $this->input('mobile')),
             ],
-            'key'                   => 'required',
             'password'              => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
             'invite'                => 'nullable|exists:users,id',
