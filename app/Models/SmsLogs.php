@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SmsLogs extends Model
+class SmsLogs extends BaseModel
 {
-    use HasFactory;
+    protected $table = 'sms_logs';
+
+    protected $guarded = ['id'];
 }

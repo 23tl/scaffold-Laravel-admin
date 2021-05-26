@@ -61,6 +61,11 @@ class ErrorConstant
         'message' => '新闻不存在'
     ];
 
+    const ADMIN_BANNER_NOT_FUND = [
+        'code' => '10050',
+        'message' => '广告不存在'
+    ];
+
     const API_USER_NOT_FUND = [
         'code' => 20010,
         'message' => '用户不存在',

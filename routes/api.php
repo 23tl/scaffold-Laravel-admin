@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\IndexController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::namespace('api')
     ->group(function () {
         Route::get('captcha', [IndexController::class, 'captcha']);
         Route::post('sms', [IndexController::class, 'sms']);
+        Route::get('banner', [BannerController::class, 'index']);
         Route::prefix('auth')
             ->group(function () {
                 Route::post('login', [LoginController::class, 'login']);

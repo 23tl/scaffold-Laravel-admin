@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Resources\Api\News\NewsCollection;
+use App\Http\Resources\Api\News\ShowResources;
 use App\Logic\NewsLogic;
 use Illuminate\Http\Request;
 
@@ -34,8 +35,13 @@ class NewsController extends ApiController
         ];
     }
 
+    /**
+     * @return array
+     */
     public function show()
     {
+        $news = $this->logic->getNewsById($this->request->input('id'));
 
+        return ShowResources::make($news)->resolve();
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,5 +117,16 @@ Route::prefix('admin')
                          Route::post('update', [TagsController::class, 'update'])->name('update');
                          Route::post('destroy', [TagsController::class, 'destroy'])->name('destroy');
                      });
+
+                Route::prefix('banner')
+                    ->name('banner.')
+                    ->group(function () {
+                        Route::get('/', [BannerController::class, 'index'])->name('index');
+                        Route::get('create', [BannerController::class, 'create'])->name('create');
+                        Route::get('edit/{id}', [BannerController::class, 'edit'])->name('edit');
+                        Route::post('store', [BannerController::class, 'store'])->name('store');
+                        Route::post('update', [BannerController::class, 'update'])->name('update');
+                        Route::post('destroy', [BannerController::class, 'destroy'])->name('destroy');
+                    });
             });
     });
