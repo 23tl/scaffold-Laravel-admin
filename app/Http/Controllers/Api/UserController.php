@@ -16,4 +16,9 @@ class UserController extends ApiController
     {
         return CurrentResources::make($this->request->user())->resolve();
     }
+
+    public function update()
+    {
+        
+    }
 }

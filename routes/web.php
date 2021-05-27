@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\BannerController;
 */
 
 Route::get('/', function () {
+    \App\Modules\Pay\Pay::wechat();
     return view('welcome');
 });
 

@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Payment\PayController;
+use App\Http\Controllers\Payment\NotifyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,16 @@ Route::namespace('api')
                     });
             });
     });
+
+Route::namespace('payment')
+    ->prefix('payment')
+    ->group(function () {
+        Route::post('pay', [PayController::class, 'pay'])->middleware(['api.auth']);
+        Route::prefix('notify')
+            ->group(function () {
+                Route::any('alipay', [NotifyController::class, 'alipay']);
+                Route::any('wechat', [NotifyController::class, 'wechat']);
+            });
+    });
+
+
