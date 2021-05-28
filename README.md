@@ -10,8 +10,13 @@
     4. Artisan 修改管理员账号密码
     5. 后台快捷入口管理
     6. 后台基础数据转为数据迁移
+    7. 内容管理
+    8. 广告管理
+    9. 用户管理
+    10. 资金明细管理
 2. API统一格式化返回
 3. 短信模块
+4. 支付模块
 
 
 ### 编写发送短信实例
@@ -30,6 +35,16 @@ Notification::route('sms', '17638163353')->notify(
             ]
         )
 );
+```
+### 支付模块实例
+```php
+use Illuminate\Support\Facades\Http;
+
+Http::post('payment/pay', [
+    'gateway' => 'alipay', // 支付网关
+    'method' => 'app',    // 支付方法，支付，app、wap
+    'orderNo' => '123455', // 订单号
+]);
 ```
 
 ## License
