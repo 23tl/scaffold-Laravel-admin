@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Payment\PayController;
 use App\Http\Controllers\Payment\NotifyController;
+use App\Http\Controllers\Api\FundLogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::namespace('api')
                 Route::prefix('user')
                     ->group(function () {
                         Route::get('current', [UserController::class, 'current']);
+                    });
+                Route::prefix('logs')
+                    ->group(function () {
+                        Route::get('fund', [FundLogsController::class, 'index']);
                     });
             });
     });

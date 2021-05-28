@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\FundLogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +25,6 @@ use App\Http\Controllers\Admin\BannerController;
 */
 
 Route::get('/', function () {
-    \App\Modules\Pay\Pay::wechat();
     return view('welcome');
 });
 
@@ -128,6 +129,23 @@ Route::prefix('admin')
                         Route::post('store', [BannerController::class, 'store'])->name('store');
                         Route::post('update', [BannerController::class, 'update'])->name('update');
                         Route::post('destroy', [BannerController::class, 'destroy'])->name('destroy');
+                    });
+
+                Route::prefix('users')
+                     ->name('users.')
+                     ->group(function () {
+                         Route::get('/', [UserController::class, 'index'])->name('index');
+                         Route::get('create', [UserController::class, 'create'])->name('create');
+                         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+                         Route::post('store', [UserController::class, 'store'])->name('store');
+                         Route::post('update', [UserController::class, 'update'])->name('update');
+                         Route::post('destroy', [UserController::class, 'destroy'])->name('destroy');
+                     });
+
+                Route::prefix('fund-logs')
+                    ->name('fund-logs.')
+                    ->group(function () {
+                        Route::get('/', [FundLogsController::class, 'index'])->name('index');
                     });
             });
     });

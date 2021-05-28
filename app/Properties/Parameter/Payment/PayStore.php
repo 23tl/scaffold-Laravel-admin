@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 class PayStore
 {
     /**
+     * 从控制器传递的参数
      * @var array
      */
     protected $params;

@@ -12,6 +12,11 @@ class User extends BaseModel
 
     protected $guarded = ['id'];
 
+    public static $statusMap = [
+        self::STATUS_SUCCESS => '正常',
+        self::STATUS_ERROR => '冻结',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
