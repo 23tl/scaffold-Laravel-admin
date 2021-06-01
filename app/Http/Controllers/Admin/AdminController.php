@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminController extends Controller
         return response()->json([
             'code' => 0,
             'msg' => $msg,
-            'count' => count($data),
+            'count' => $data instanceof Collection ? count($data) : $data->total(),
             'data' => $data,
                                 ]);
     }

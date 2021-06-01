@@ -95,7 +95,7 @@ class UserSeeder extends Seeder
         Admin::create([
             'name' => 'admin',
             'account' => '超级管理员',
-            'password' => Hash::make('admin123'),
+            'password' => 'admin123',
             'roleId' => $role->id,
                       ]);
     }

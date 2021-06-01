@@ -72,7 +72,7 @@ class ResetPassword extends Command
             goto enterPassword;
         }
 
-        $user->password = bcrypt($password);
+        $user->password = $password;
 
         $user->save();
 
